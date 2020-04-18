@@ -34,6 +34,11 @@ namespace RoShamBo5
                 Console.WriteLine("Player 1 Wins!");
         }
 
+        /// <summary>
+        /// Returns true if there were 3 consecutive ties.
+        /// Also finds the losing player and declairs them the winner
+        /// </summary>
+        /// <returns></returns>
         public static bool CheckTie()
         {
             if (Ties >= 3)
@@ -53,6 +58,10 @@ namespace RoShamBo5
             return false;
         }
 
+        /// <summary>
+        /// Returns true if a player has 0 tiles left and marks them as the loser.
+        /// </summary>
+        /// <returns></returns>
         private static bool CheckWin()
         {
             if (Player1.Count() <= 0)
@@ -70,6 +79,9 @@ namespace RoShamBo5
             return false;
         }
 
+        /// <summary>
+        /// Give both players 2 of each tile to start the game.
+        /// </summary>
         public static void InitTiles()
         {
             var temp = new List<Tile>();
@@ -90,6 +102,13 @@ namespace RoShamBo5
             Player2.Hand = temp;
         }
 
+        /// <summary>
+        /// Process the outcome of each hand.
+        /// Award the winner of each hand the winning tiles.
+        /// Detects ties and gives both players their tiles back if found.
+        /// Detects a double tie and ticks the ties tracker up.
+        /// Processes the Left hand then the right hand
+        /// </summary>
         public static void PlayTurn()
         {
             if (Player1.Left.Equals(Player2.Left))
@@ -192,6 +211,10 @@ namespace RoShamBo5
             }
         }
 
+        /// <summary>
+        /// Get left then right hand choices for player 1.
+        /// Reject any input that is not a number between 1 and 5 inclusive.
+        /// </summary>
         public static void Player1Choose()
         {
             var p1Left = false;
@@ -240,6 +263,10 @@ namespace RoShamBo5
             }
         }
 
+        /// <summary>
+        /// Get left then right hand choices for player 2.
+        /// Reject any input that is not a number between 1 and 5 inclusive.
+        /// </summary>
         public static void Player2Choose()
         {
             var p2Left = false;
